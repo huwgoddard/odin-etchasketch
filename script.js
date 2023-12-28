@@ -1,8 +1,3 @@
-
-
-
-let sideLength=16;
-
 let mainContainer=document.querySelector('#main-container');
 
 function mouseover(event) {
@@ -11,11 +6,16 @@ function mouseover(event) {
     }
 }
 
-for (let i=0;i<sideLength**2;i++) {
+function setSize(canvasSideLength=16) {
+    squareSideLength = 960/canvasSideLength;
+    for (let i=0;i<canvasSideLength**2;i++) {
     let square=document.createElement('div');
-    square.style.backgroundColor= 'pink';
-    square.style.height='60px';
-    square.style.width='60px';
-    square.addEventListener('mouseover',mouseover)
-    mainContainer.appendChild(square);
+        square.style.backgroundColor= 'pink';
+        square.style.height=squareSideLength.toString()+'px';
+        square.style.width=square.style.height;
+        square.addEventListener('mouseover',mouseover)
+        mainContainer.appendChild(square);
+    }
 }
+
+setSize(16);

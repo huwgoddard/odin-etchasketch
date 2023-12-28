@@ -1,6 +1,6 @@
 function mouseover(event) {
     if (event.ctrlKey === true) {
-        event.target.style.backgroundColor='black';
+        event.target.style.backgroundColor=`rgb(${random256()},${random256()},${random256()})`;
     }
 }
 
@@ -17,12 +17,15 @@ const sizerButton = document.querySelector('#sizer');
 
 sizerButton.addEventListener('click', clickSetSize);
 
+function random256() {
+    return Math.floor(Math.random()*256).toString();
+}
+
 function setSize(canvasSideLength=16) {
     squareSideLength = 960/canvasSideLength;
     canvas = document.querySelector('#main-container');
     while (canvas.firstChild) {
         canvas.removeChild(canvas.lastChild);
-        console.log('yip')
     }
     for (let i=0;i<canvasSideLength**2;i++) {
     let square=document.createElement('div');

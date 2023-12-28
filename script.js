@@ -1,6 +1,15 @@
+let darkenFactor = 0;
+
 function mouseover(event) {
     if (event.ctrlKey === true) {
-        event.target.style.backgroundColor=`rgb(${random256()},${random256()},${random256()})`;
+        console.log(darkenFactor);
+        event.target.style.backgroundColor=`rgba(10,10,10,${darkenFactor})`
+        //event.target.style.backgroundColor=`rgba(${random256()},${random256()},${random256()},${darkenFactor})`;
+        if (darkenFactor>=1) {
+            darkenFactor=0;
+        } else {
+            darkenFactor+=0.1;
+        }
     }
 }
 
@@ -22,6 +31,7 @@ function random256() {
 }
 
 function setSize(canvasSideLength=16) {
+    darkenFactor=0;
     squareSideLength = 960/canvasSideLength;
     canvas = document.querySelector('#main-container');
     while (canvas.firstChild) {

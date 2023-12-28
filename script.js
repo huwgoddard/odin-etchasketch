@@ -6,9 +6,9 @@ let sideLength=16;
 let mainContainer=document.querySelector('#main-container');
 
 function mouseover(event) {
-    let target = event.target;
-    console.log(target);
-    target.style.backgroundColor='black';
+    if (event.ctrlKey === true) {
+        event.target.style.backgroundColor='black';
+    }
 }
 
 for (let i=0;i<sideLength**2;i++) {
@@ -18,5 +18,4 @@ for (let i=0;i<sideLength**2;i++) {
     square.style.width='60px';
     square.addEventListener('mouseover',mouseover)
     mainContainer.appendChild(square);
-    console.log(i);
 }

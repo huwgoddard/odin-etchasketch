@@ -1,11 +1,13 @@
+function random256() {
+    return Math.floor(Math.random()*256).toString();
+}
 let darkenFactor = 0;
 
 function mouseover(event) {
     if (event.ctrlKey === true) {
         console.log(darkenFactor);
-        event.target.style.backgroundColor=`rgba(10,10,10,${darkenFactor})`
-        //event.target.style.backgroundColor=`rgba(${random256()},${random256()},${random256()},${darkenFactor})`;
-        if (darkenFactor>=1) {
+        event.target.style.backgroundColor=`rgba(${random256()},${random256()},${random256()},${darkenFactor})`;
+        if (darkenFactor>=0.9) {
             darkenFactor=0;
         } else {
             darkenFactor+=0.1;
@@ -26,10 +28,6 @@ const sizerButton = document.querySelector('#sizer');
 
 sizerButton.addEventListener('click', clickSetSize);
 
-function random256() {
-    return Math.floor(Math.random()*256).toString();
-}
-
 function setSize(canvasSideLength=16) {
     darkenFactor=0;
     squareSideLength = 960/canvasSideLength;
@@ -48,4 +46,3 @@ function setSize(canvasSideLength=16) {
 }
 
 setSize();
-
